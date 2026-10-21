@@ -1,3 +1,12 @@
 # ansible_leaarning
 
-The README file is good for training.
+
+New York
+Texas
+Colorado
+Nevada
+Los Angeles
+Yyoming
+New Mexico
+Denver
+
