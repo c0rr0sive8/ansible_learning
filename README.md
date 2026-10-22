@@ -1,12 +1,11 @@
 # ansible_leaarning
 
+Berlin
+Frankfurt
+Cologne
+Mainz
+Hamburg
+Bremen
+Freiburg
 
-Tokyo
-Osaka
-Kawasaki
-Yamaha
-Okinawa
-Hokaido
-Kyoto
-
-Japanese Cities
+German Cities
