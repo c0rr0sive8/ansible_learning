@@ -1,11 +1,12 @@
 # ansible_leaarning
 
-Berlin
-Frankfurt
-Cologne
-Mainz
-Hamburg
-Bremen
-Freiburg
 
-German Cities
+
+Manchester
+London
+Liverpool
+Newcastle
+Yorkshire
+Ipwich
+
+Cities of England
