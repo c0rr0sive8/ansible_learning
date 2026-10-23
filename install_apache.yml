@@ -7,13 +7,34 @@
   - name: update Repository index
     dnf:
       update_cache: yes
+    when: ansible_distribution == "Rocky" 
 
   - name: Install the Apache2 package
     dnf:
       name: httpd 
       state: latest
+    when: ansible_distribution == "Rocky"
 
   - name: add php common
     dnf:
       name: php-common
       state: latest
+    when: ansible_distribution == "Rocky"
+
+  - name: update Repository index
+    apt:
+      update_cache: yes
+    when: ansible_distribution == "Ubuntu"
+
+  - name: Install the Apache2 package
+    apt:
+      name: apache2
+      state: latest
+    when: ansible_distribution == "Ubuntu"
+
+  - name: add php-common common
+    apt:
+      name: php-common
+      state: latest
+    when: ansible_distribution == "Ubuntu"
+
