@@ -1,12 +1,8 @@
 # ansible_leaarning
 
+Malaga
+Madrid
+Barcelona
+Saragosa
 
-
-Manchester
-London
-Liverpool
-Newcastle
-Yorkshire
-Ipwich
-
-Cities of England
+Cities of Spain
