@@ -1,6 +1,6 @@
 ### Rocky Linux ###
-192.168.172.21
-192.168.172.22
+192.168.172.21 apache_package=httpd php_package=php-common
+192.168.172.22 apache_package=httpd php_package=php-common
 
 ### Ubuntu ###
-192.168.172.23
+192.168.172.23 apache_package=apache2 php_package=php-common
