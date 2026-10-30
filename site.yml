@@ -1,0 +1,74 @@
+---
+
+- hosts: all
+  become: true
+  pre_tasks:
+
+
+  - name: install updates on Rocky
+    dnf:
+      update_only: yes
+      update_cache: yes
+    when: ansible_distribution == "Rocky"
+
+
+  - name: install update on Ubuntu
+    apt:
+      upgrade: dist
+      update_cache: yes
+    when: ansible_distribution == "Ubuntu"
+
+
+
+
+
+- hosts: web_servers
+  become: true
+  tasks:
+
+
+  - name: Install the Apache & PHP-Common package on Rocky
+    dnf:
+      name:
+        - httpd
+        - php-common
+      state: latest
+    when: ansible_distribution == "Rocky"
+
+
+  - name: Install the Apache & PHP-Common package on Ubuntu
+    apt:
+      name:
+        - apache2
+        - php-common
+      state: latest
+    when: ansible_distribution == "Ubuntu"
+
+
+- hosts: db_servers
+  become: true
+  tasks:
+
+  - name: Install MariaDB package on Rocky
+    dnf:
+      name: mariadb-server
+      state: latest
+    when: ansible_distribution == "Rocky"
+
+  - name: Install MariaDB package on Ubuntu
+    apt:
+      name: mariadb-server
+      state: latest
+    when: ansible_distribution == "Ubuntu"
+
+
+
+- hosts: file_servers
+  become: true
+  tasks:
+
+  - name: Install Samba packages
+    package:
+      name: samba
+      state: latest
+

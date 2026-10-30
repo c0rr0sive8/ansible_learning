@@ -5,10 +5,21 @@
   tasks:
 
 
-  - name: Install the Apache & PHP-Common package
-    package:
+  - name: Install the Apache & PHP-Common package on Rocky
+    dnf:
       name:
-        - "{{ apache_package }}"
-        - "{{ php_package }}"
+        - httpd
+        - php-common
       state: latest
       update_cache: yes
+    when: ansible_distribution == "Rocky"
+
+
+  - name: Install the Apache & PHP-Common package on Ubuntu
+    apt:
+      name:
+        - apache2
+        - php-common
+      state: latest
+      update_cache: yes
+    when: ansible_distribution == "Ubuntu"
