@@ -6,13 +6,15 @@
 
 
   - name: install updates on Rocky
+    tags: always
     dnf:
-      update_only: yes
-      update_cache: yes
+      name: "*"
+      state: latest
     when: ansible_distribution == "Rocky"
 
 
   - name: install update on Ubuntu
+    tags: always
     apt:
       upgrade: dist
       update_cache: yes
@@ -28,6 +30,7 @@
 
 
   - name: Install the Apache & PHP-Common package on Rocky
+    tags: apache,rockylinux,httpd
     dnf:
       name:
         - httpd
@@ -37,6 +40,7 @@
 
 
   - name: Install the Apache & PHP-Common package on Ubuntu
+    tags: apache,apache2,ubuntu
     apt:
       name:
         - apache2
@@ -50,12 +54,14 @@
   tasks:
 
   - name: Install MariaDB package on Rocky
+    tags: rockylinux,db,mariadb
     dnf:
       name: mariadb-server
       state: latest
     when: ansible_distribution == "Rocky"
 
   - name: Install MariaDB package on Ubuntu
+    tags: db,mariadb,ubuntu
     apt:
       name: mariadb-server
       state: latest
@@ -68,6 +74,7 @@
   tasks:
 
   - name: Install Samba packages
+    tags: samba
     package:
       name: samba
       state: latest
