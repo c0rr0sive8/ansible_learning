@@ -58,6 +58,36 @@
     when: ansible_distribution == "Rocky"
 
 
+  - name: Start httpd on Rocky Linux
+    tags: apache, rockylinux,httpd
+    service:
+      name: httpd
+      state: started
+      enabled: yes
+    when: ansible_distribution == "Rocky"
+
+
+
+  - name: Change e-mail address for admin
+    tags: apache,rockylinux,httpd
+    lineinfile:
+      path: /etc/httpd/conf/httpd.conf
+      regexp: '^ServerAdmin'
+      line: ServerAdmin somebody@somewhere.net
+    when: ansible_distribution == "Rocky"
+    register: httpd
+
+
+  - name: Restart httpd on Rocky Linux
+    tags: apache,rockylinux,httpd
+    service:
+      name: httpd
+      state: restarted
+    when: httpd.changed
+
+
+
+
   - name: Install the Apache & PHP-Common package on Ubuntu
     tags: apache,apache2,ubuntu
     apt:
