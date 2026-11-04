@@ -5,20 +5,31 @@
   pre_tasks:
 
 
-  - name: install updates on Rocky
+  - name: Updates the repositories on Rocky
     tags: always
     dnf:
-      name: "*"
-      state: latest
+      update_cache: yes
+    changed_when: false
     when: ansible_distribution == "Rocky"
 
 
-  - name: install update on Ubuntu
+  - name: Update the repositories on Ubuntu
     tags: always
     apt:
-      upgrade: dist
       update_cache: yes
+    changed_when: false
     when: ansible_distribution == "Ubuntu"
+
+
+- hosts: all
+  become: true
+  tasks:
+
+  - name: Add SSH-Key for Bob
+    tags: always
+    authorized_key:
+      user: bob
+      key: "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIArybSn/1KTwHCcQ84bD6cYqNghrHgIAkVJZ9EAQL83d ansible"    
 
 
 
